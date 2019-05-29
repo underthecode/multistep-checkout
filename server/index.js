@@ -13,10 +13,6 @@ app.use(
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-// app.get('/', (req, res) => {
-//   res.send('hello');
-// });
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Multistep Checkout is listening on ${PORT}`);
