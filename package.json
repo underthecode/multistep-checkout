@@ -1,0 +1,30 @@
+{
+  "name": "multistep-checkout",
+  "version": "1.0.0",
+  "description": "deployed single-page full stack app that simulates a checkout experience",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon server/index.js",
+    "build:dev": "./node_modules/.bin/babel client --watch --out-dir public --presets @babel/preset-react --source-maps inline"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/underthecode/multistep-checkout.git"
+  },
+  "author": "underthecode",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/underthecode/multistep-checkout/issues"
+  },
+  "homepage": "https://github.com/underthecode/multistep-checkout#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^1.19.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-react": "^7.0.0"
+  }
+}
