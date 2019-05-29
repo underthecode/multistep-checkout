@@ -293,8 +293,8 @@ class Confirmation extends React.Component {
             Prev
           </button>
 
-          <button className="btn-next" onClick={this.next}>
-            Next
+          <button className="btn-purchase" onClick={this.purchase}>
+            Purchase
           </button>
         </div>
       </div>
@@ -324,7 +324,7 @@ class App extends React.Component {
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handlePurchase = this.handlePurchase.bind(this);
   }
 
   nextStep() {
@@ -347,12 +347,9 @@ class App extends React.Component {
     };
   }
 
-  handleSubmit(e) {
+  handlePurchase(e) {
     e.preventDefault();
-    alert(`Your registration detail: \n
-           Email: ${this.state.email} \n
-           Username: ${this.state.username} \n
-           Password: ${this.state.password}`);
+    // reroutes to Checkout comp
   }
 
   render() {
@@ -420,6 +417,7 @@ class App extends React.Component {
           <Confirmation
             nextStep={this.nextStep}
             prevStep={this.prevStep}
+            handlePurchase={this.handlePurchase}
             values={values}
           />
         );
