@@ -23,12 +23,19 @@ class Landing extends React.Component {
 }
 
 class F1 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+  }
+
   next(e) {
     e.preventDefault();
     this.props.nextStep();
   }
 
-  back(e) {
+  prev(e) {
     e.preventDefault();
     this.props.prevStep();
   }
@@ -64,6 +71,10 @@ class F1 extends React.Component {
               defaultValue={this.props.values.password}
             />
           </label>
+
+          <button className="btn-prev" onClick={this.prev}>
+            Prev
+          </button>
 
           <button className="btn-next" onClick={this.next}>
             Next
@@ -164,6 +175,7 @@ class App extends React.Component {
         return (
           <F1
             nextStep={this.nextStep}
+            prevStep={this.prevStep}
             handleChange={this.handleChange}
             values={values}
           />
