@@ -15,7 +15,7 @@ class Landing extends React.Component {
       <div>
         <h2>Checkout</h2>
         <button className="btn-checkout" onClick={this.checkout}>
-          Checkout
+          Proceed to Checkout
         </button>
       </div>
     );
@@ -85,6 +85,223 @@ class F1 extends React.Component {
   }
 }
 
+class F2 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+  }
+
+  next(e) {
+    e.preventDefault();
+    this.props.nextStep();
+  }
+
+  prev(e) {
+    e.preventDefault();
+    this.props.prevStep();
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Shipping</h2>
+        <form>
+          <label>
+            Address Line 1
+            <input
+              name="addressOne"
+              onChange={this.props.handleChange('addressOne')}
+              defaultValue={this.props.values.addressOne}
+            />
+          </label>
+
+          <label>
+            Address Line 2
+            <input
+              name="addressTwo"
+              onChange={this.props.handleChange('addressTwo')}
+              defaultValue={this.props.values.addressTwo}
+            />
+          </label>
+
+          <label>
+            City
+            <input
+              name="city"
+              onChange={this.props.handleChange('city')}
+              defaultValue={this.props.values.city}
+            />
+          </label>
+
+          <label>
+            State
+            <input
+              name="state"
+              onChange={this.props.handleChange('state')}
+              defaultValue={this.props.values.state}
+            />
+          </label>
+
+          <label>
+            Zip Code
+            <input
+              name="zip"
+              onChange={this.props.handleChange('zip')}
+              defaultValue={this.props.values.zip}
+            />
+          </label>
+
+          <button className="btn-prev" onClick={this.prev}>
+            Prev
+          </button>
+
+          <button className="btn-next" onClick={this.next}>
+            Next
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
+class F3 extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.next = this.next.bind(this);
+    this.prev = this.prev.bind(this);
+  }
+
+  next(e) {
+    e.preventDefault();
+    this.props.nextStep();
+  }
+
+  prev(e) {
+    e.preventDefault();
+    this.props.prevStep();
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Billing</h2>
+        <form>
+          <label>
+            Credit Card Number
+            <input
+              name="cc"
+              onChange={this.props.handleChange('cc')}
+              defaultValue={this.props.values.cc}
+            />
+          </label>
+
+          <label>
+            Expiration Date
+            <input
+              name="exp"
+              onChange={this.props.handleChange('exp')}
+              defaultValue={this.props.values.exp}
+            />
+          </label>
+
+          <label>
+            CVV
+            <input
+              name="cvv"
+              onChange={this.props.handleChange('cvv')}
+              defaultValue={this.props.values.cvv}
+            />
+          </label>
+
+          <label>
+            Billing Zip Code
+            <input
+              name="billingZip"
+              onChange={this.props.handleChange('billingZip')}
+              defaultValue={this.props.values.billingZip}
+            />
+          </label>
+
+          <button className="btn-prev" onClick={this.prev}>
+            Prev
+          </button>
+
+          <button className="btn-next" onClick={this.next}>
+            Next
+          </button>
+        </form>
+      </div>
+    );
+  }
+}
+
+class Confirmation extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.purchase = this.purchase.bind(this);
+    this.prev = this.prev.bind(this);
+  }
+
+  purchase(e) {
+    e.preventDefault();
+    this.props.nextStep();
+  }
+
+  prev(e) {
+    e.preventDefault();
+    this.props.prevStep();
+  }
+
+  render() {
+    const {
+      values: {
+        name,
+        email,
+        addressOne,
+        addressTwo,
+        city,
+        state,
+        zip,
+        cc,
+        exp,
+        cvv,
+        billingZip
+      }
+    } = this.props;
+
+    return (
+      <div>
+        <h2>Confirm your details</h2>
+        <div>
+          <li name="name">Name: {name}</li>
+          <li name="email">Email: {email}</li>
+          <li name="addressOne">Address Line 1: {addressOne}</li>
+          <li name="addressTwo">Address Line 2: {addressTwo}</li>
+          <li name="city">City: {city}</li>
+          <li name="state">State: {state}</li>
+          <li name="zip">Zip: {zip}</li>
+          <li name="cc">Credit Card Number: {cc}</li>
+          <li name="exp">Expiration Date: {exp}</li>
+          <li name="cvv">CVV: {cvv}</li>
+          <li name="billingZip">Billing Zip Code: {billingZip}</li>
+
+          <button className="btn-prev" onClick={this.prev}>
+            Prev
+          </button>
+
+          <button className="btn-next" onClick={this.next}>
+            Next
+          </button>
+        </div>
+      </div>
+    );
+  }
+}
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -93,8 +310,8 @@ class App extends React.Component {
       name: '',
       email: '',
       password: '',
-      addressLine1: '',
-      addressLine2: '',
+      addressOne: '',
+      addressTwo: '',
       city: '',
       state: '',
       zip: '',
@@ -143,8 +360,8 @@ class App extends React.Component {
       name,
       email,
       password,
-      addressLine1,
-      addressLine2,
+      addressOne,
+      addressTwo,
       city,
       state,
       zip,
@@ -157,8 +374,8 @@ class App extends React.Component {
       name,
       email,
       password,
-      addressLine1,
-      addressLine2,
+      addressOne,
+      addressTwo,
       city,
       state,
       zip,
@@ -181,11 +398,31 @@ class App extends React.Component {
           />
         );
       case 3:
-        return <F2 />;
+        return (
+          <F2
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
       case 4:
-        return <F3 />;
+        return (
+          <F3
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            handleChange={this.handleChange}
+            values={values}
+          />
+        );
       case 5:
-        return <Confirmation />;
+        return (
+          <Confirmation
+            nextStep={this.nextStep}
+            prevStep={this.prevStep}
+            values={values}
+          />
+        );
     }
   }
 }
