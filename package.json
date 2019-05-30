@@ -6,7 +6,8 @@
   "scripts": {
     "start:dev": "nodemon server/index.js",
     "build:dev": "./node_modules/.bin/babel client --watch --out-dir public --presets @babel/preset-react --source-maps inline",
-    "dev": "concurrently \"npm run start:dev\" \"npm run build:dev\""
+    "seed:dev": "mysql -u root < db/schema.sql",
+    "dev": "concurrently \"npm run start:dev\" \"npm run build:dev\" \"npm run seed:dev\""
   },
   "repository": {
     "type": "git",
