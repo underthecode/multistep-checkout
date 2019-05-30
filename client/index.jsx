@@ -50,13 +50,15 @@ class F1 extends React.Component {
             Name
             <input
               name="name"
-              // onChange={e => {
-              //   this.props.handleChange(e);
-              // }}
               onChange={e => {
                 console.log('NAME', e.target.name);
                 console.log('VALUE', e.target.value);
+                this.props.handleChange(e);
               }}
+              // onChange={e => {
+              //   console.log('NAME', e.target.name);
+              //   console.log('VALUE', e.target.value);
+              // }}
               defaultValue={this.props.values.name}
             />
           </label>
@@ -363,10 +365,10 @@ class App extends React.Component {
     });
   }
 
-  handleChange(input) {
+  handleChange(e) {
     e => {
       this.setState({
-        [input]: e.target.value
+        [e.target.name]: e.target.value
       });
     };
   }
@@ -434,6 +436,7 @@ class App extends React.Component {
       billingZip
     } = this.state;
     const values = {
+      // values: {this.state.name, etc}
       name,
       email,
       password,
