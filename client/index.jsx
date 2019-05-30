@@ -248,7 +248,7 @@ class Confirmation extends React.Component {
 
   purchase(e) {
     e.preventDefault();
-    this.props.nextStep();
+    this.props.handlePurchase();
   }
 
   prev(e) {
@@ -318,7 +318,8 @@ class App extends React.Component {
       cc: '',
       exp: '',
       cvv: '',
-      billingZip: ''
+      billingZip: '',
+      handlePurchase: false
     };
 
     this.nextStep = this.nextStep.bind(this);
@@ -348,8 +349,9 @@ class App extends React.Component {
   }
 
   handlePurchase(e) {
-    e.preventDefault();
-    // reroutes to Checkout comp
+    this.setState({
+      step: this.state.step - 4
+    });
   }
 
   render() {
