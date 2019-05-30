@@ -33,6 +33,7 @@ class F1 extends React.Component {
   next(e) {
     e.preventDefault();
     this.props.nextStep();
+    this.props.handleAccount();
   }
 
   prev(e) {
@@ -88,7 +89,6 @@ class F1 extends React.Component {
 class F2 extends React.Component {
   constructor(props) {
     super(props);
-
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
   }
@@ -96,6 +96,7 @@ class F2 extends React.Component {
   next(e) {
     e.preventDefault();
     this.props.nextStep();
+    this.props.handleShipping();
   }
 
   prev(e) {
@@ -153,6 +154,15 @@ class F2 extends React.Component {
             />
           </label>
 
+          <label>
+            Phone
+            <input
+              name="phone"
+              onChange={this.props.handleChange('phone')}
+              defaultValue={this.props.values.phone}
+            />
+          </label>
+
           <button className="btn-prev" onClick={this.prev}>
             Prev
           </button>
@@ -177,6 +187,7 @@ class F3 extends React.Component {
   next(e) {
     e.preventDefault();
     this.props.nextStep();
+    this.props.handleBilling();
   }
 
   prev(e) {
@@ -266,6 +277,7 @@ class Confirmation extends React.Component {
         city,
         state,
         zip,
+        phone,
         cc,
         exp,
         cvv,
@@ -284,6 +296,7 @@ class Confirmation extends React.Component {
           <li name="city">City: {city}</li>
           <li name="state">State: {state}</li>
           <li name="zip">Zip: {zip}</li>
+          <li name="phone">Phone: {phone}</li>
           <li name="cc">Credit Card Number: {cc}</li>
           <li name="exp">Expiration Date: {exp}</li>
           <li name="cvv">CVV: {cvv}</li>
@@ -318,13 +331,15 @@ class App extends React.Component {
       cc: '',
       exp: '',
       cvv: '',
-      billingZip: '',
-      handlePurchase: false
+      billingZip: ''
     };
 
     this.nextStep = this.nextStep.bind(this);
     this.prevStep = this.prevStep.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleAccount = this.handleAccount.bind(this);
+    this.handleShipping = this.handleShipping.bind(this);
+    this.handleBilling = this.handleBilling.bind(this);
     this.handlePurchase = this.handlePurchase.bind(this);
   }
 
@@ -346,6 +361,46 @@ class App extends React.Component {
         [input]: e.target.value
       });
     };
+  }
+
+  handleAccount(e) {
+    fetch('/account', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: this.state.name,
+        email: this.state.email,
+        password: this.state.password
+      })
+    });
+  }
+
+  handleShipping(e) {
+    fetch('/shipping', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        addressOne: this.state.addressOne,
+        addressTwo: this.state.addressTwo,
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip,
+        phone: this.state.phone
+      })
+    });
+  }
+
+  handleBilling(e) {
+    fetch('/billing', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        cc: this.state.cc,
+        exp: this.state.exp,
+        cvv: this.state.cvv,
+        billingZip: this.state.billingZip
+      })
+    });
   }
 
   handlePurchase(e) {
@@ -393,6 +448,7 @@ class App extends React.Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleAccount={this.handleAccount}
             values={values}
           />
         );
@@ -402,6 +458,7 @@ class App extends React.Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleShipping={this.handleShipping}
             values={values}
           />
         );
@@ -411,6 +468,7 @@ class App extends React.Component {
             nextStep={this.nextStep}
             prevStep={this.prevStep}
             handleChange={this.handleChange}
+            handleBilling={this.handleBilling}
             values={values}
           />
         );
