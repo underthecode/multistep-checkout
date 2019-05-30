@@ -25,7 +25,7 @@ class Landing extends React.Component {
 class F1 extends React.Component {
   constructor(props) {
     super(props);
-
+    console.log(this.props);
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
   }
@@ -328,6 +328,7 @@ class App extends React.Component {
       city: '',
       state: '',
       zip: '',
+      phone: '',
       cc: '',
       exp: '',
       cvv: '',
@@ -419,6 +420,7 @@ class App extends React.Component {
       city,
       state,
       zip,
+      phone,
       cc,
       exp,
       cvv,
@@ -433,6 +435,7 @@ class App extends React.Component {
       city,
       state,
       zip,
+      phone,
       cc,
       exp,
       cvv,
