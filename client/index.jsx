@@ -25,7 +25,7 @@ class Landing extends React.Component {
 class F1 extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
   }
@@ -50,7 +50,13 @@ class F1 extends React.Component {
             Name
             <input
               name="name"
-              onChange={this.props.handleChange('name')}
+              // onChange={e => {
+              //   this.props.handleChange(e);
+              // }}
+              onChange={e => {
+                console.log('NAME', e.target.name);
+                console.log('VALUE', e.target.value);
+              }}
               defaultValue={this.props.values.name}
             />
           </label>
@@ -89,6 +95,7 @@ class F1 extends React.Component {
 class F2 extends React.Component {
   constructor(props) {
     super(props);
+
     this.next = this.next.bind(this);
     this.prev = this.prev.bind(this);
   }
