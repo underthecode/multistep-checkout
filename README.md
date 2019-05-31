@@ -2,7 +2,10 @@
 
 ## try it out!
 
-- not quite ready... in the mean time, dance to [this](https://youtu.be/XMmUXamntPI) :smiley:
+- `git clone` this repo
+- `npm install` in terminal
+- `npm run dev` in terminal
+- click [this](http://localhost:3000/) to open in browser
 
 ## requirements
 
