@@ -50,15 +50,7 @@ class F1 extends React.Component {
             Name
             <input
               name="name"
-              onChange={e => {
-                console.log('NAME', e.target.name);
-                console.log('VALUE', e.target.value);
-                this.props.handleChange(e);
-              }}
-              // onChange={e => {
-              //   console.log('NAME', e.target.name);
-              //   console.log('VALUE', e.target.value);
-              // }}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.name}
             />
           </label>
@@ -67,7 +59,7 @@ class F1 extends React.Component {
             Email
             <input
               name="email"
-              onChange={this.props.handleChange('email')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.email}
             />
           </label>
@@ -76,7 +68,7 @@ class F1 extends React.Component {
             Password
             <input
               name="password"
-              onChange={this.props.handleChange('password')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.password}
             />
           </label>
@@ -122,7 +114,7 @@ class F2 extends React.Component {
             Address Line 1
             <input
               name="addressOne"
-              onChange={this.props.handleChange('addressOne')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.addressOne}
             />
           </label>
@@ -131,7 +123,7 @@ class F2 extends React.Component {
             Address Line 2
             <input
               name="addressTwo"
-              onChange={this.props.handleChange('addressTwo')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.addressTwo}
             />
           </label>
@@ -140,7 +132,7 @@ class F2 extends React.Component {
             City
             <input
               name="city"
-              onChange={this.props.handleChange('city')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.city}
             />
           </label>
@@ -149,7 +141,7 @@ class F2 extends React.Component {
             State
             <input
               name="state"
-              onChange={this.props.handleChange('state')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.state}
             />
           </label>
@@ -158,7 +150,7 @@ class F2 extends React.Component {
             Zip Code
             <input
               name="zip"
-              onChange={this.props.handleChange('zip')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.zip}
             />
           </label>
@@ -167,7 +159,7 @@ class F2 extends React.Component {
             Phone
             <input
               name="phone"
-              onChange={this.props.handleChange('phone')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.phone}
             />
           </label>
@@ -213,7 +205,7 @@ class F3 extends React.Component {
             Credit Card Number
             <input
               name="cc"
-              onChange={this.props.handleChange('cc')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.cc}
             />
           </label>
@@ -222,7 +214,7 @@ class F3 extends React.Component {
             Expiration Date
             <input
               name="exp"
-              onChange={this.props.handleChange('exp')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.exp}
             />
           </label>
@@ -231,7 +223,7 @@ class F3 extends React.Component {
             CVV
             <input
               name="cvv"
-              onChange={this.props.handleChange('cvv')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.cvv}
             />
           </label>
@@ -240,7 +232,7 @@ class F3 extends React.Component {
             Billing Zip Code
             <input
               name="billingZip"
-              onChange={this.props.handleChange('billingZip')}
+              onChange={this.props.handleChange}
               defaultValue={this.props.values.billingZip}
             />
           </label>
@@ -365,12 +357,14 @@ class App extends React.Component {
     });
   }
 
+  // big lesson: onChange is an invocation itself
+  // unless method passed down into prop returns something explicit
+  // generally onChange should handle a function definition
+  // NOT a function invocation
   handleChange(e) {
-    e => {
-      this.setState({
-        [e.target.name]: e.target.value
-      });
-    };
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   }
 
   handleAccount(e) {

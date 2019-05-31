@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const controllers = require('../controllers/index');
 
-// router.get('/', (req, res) => {
-//   res.statusCode(200).send('Homepage renders');
-// });
+router.get('/', (req, res) => {
+  res.status(200).send('Homepage renders');
+});
 
 router.post('/account', (req, res) => {
   controllers.createAccount(req.body, (err, data) => {
