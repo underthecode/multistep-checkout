@@ -1,7 +1,7 @@
 {
   "name": "multistep-checkout",
   "version": "1.0.0",
-  "description": "single-page full stack app that simulates a checkout experience",
+  "description": "single-page app that simulates a checkout experience",
   "main": "./client/index.jsx",
   "scripts": {
     "start:dev": "nodemon server/index.js",
