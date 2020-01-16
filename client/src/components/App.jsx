@@ -1,3 +1,5 @@
+import React from 'react';
+
 class Landing extends React.Component {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class Landing extends React.Component {
     return (
       <div>
         <h2>Checkout</h2>
-        <button className="btn-checkout" onClick={this.checkout}>
+        <button className='btn-checkout' onClick={this.checkout}>
           Proceed to Checkout
         </button>
       </div>
@@ -49,7 +51,7 @@ class F1 extends React.Component {
           <label>
             Name
             <input
-              name="name"
+              name='name'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.name}
             />
@@ -58,7 +60,7 @@ class F1 extends React.Component {
           <label>
             Email
             <input
-              name="email"
+              name='email'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.email}
             />
@@ -67,17 +69,17 @@ class F1 extends React.Component {
           <label>
             Password
             <input
-              name="password"
+              name='password'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.password}
             />
           </label>
 
-          <button className="btn-prev" onClick={this.prev}>
+          <button className='btn-prev' onClick={this.prev}>
             Prev
           </button>
 
-          <button className="btn-next" onClick={this.next}>
+          <button className='btn-next' onClick={this.next}>
             Next
           </button>
         </form>
@@ -113,7 +115,7 @@ class F2 extends React.Component {
           <label>
             Address Line 1
             <input
-              name="addressOne"
+              name='addressOne'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.addressOne}
             />
@@ -122,7 +124,7 @@ class F2 extends React.Component {
           <label>
             Address Line 2
             <input
-              name="addressTwo"
+              name='addressTwo'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.addressTwo}
             />
@@ -131,7 +133,7 @@ class F2 extends React.Component {
           <label>
             City
             <input
-              name="city"
+              name='city'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.city}
             />
@@ -140,7 +142,7 @@ class F2 extends React.Component {
           <label>
             State
             <input
-              name="state"
+              name='state'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.state}
             />
@@ -149,7 +151,7 @@ class F2 extends React.Component {
           <label>
             Zip Code
             <input
-              name="zip"
+              name='zip'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.zip}
             />
@@ -158,17 +160,17 @@ class F2 extends React.Component {
           <label>
             Phone
             <input
-              name="phone"
+              name='phone'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.phone}
             />
           </label>
 
-          <button className="btn-prev" onClick={this.prev}>
+          <button className='btn-prev' onClick={this.prev}>
             Prev
           </button>
 
-          <button className="btn-next" onClick={this.next}>
+          <button className='btn-next' onClick={this.next}>
             Next
           </button>
         </form>
@@ -204,7 +206,7 @@ class F3 extends React.Component {
           <label>
             Credit Card Number
             <input
-              name="cc"
+              name='cc'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.cc}
             />
@@ -213,7 +215,7 @@ class F3 extends React.Component {
           <label>
             Expiration Date
             <input
-              name="exp"
+              name='exp'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.exp}
             />
@@ -222,7 +224,7 @@ class F3 extends React.Component {
           <label>
             CVV
             <input
-              name="cvv"
+              name='cvv'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.cvv}
             />
@@ -231,17 +233,17 @@ class F3 extends React.Component {
           <label>
             Billing Zip Code
             <input
-              name="billingZip"
+              name='billingZip'
               onChange={this.props.handleChange}
               defaultValue={this.props.values.billingZip}
             />
           </label>
 
-          <button className="btn-prev" onClick={this.prev}>
+          <button className='btn-prev' onClick={this.prev}>
             Prev
           </button>
 
-          <button className="btn-next" onClick={this.next}>
+          <button className='btn-next' onClick={this.next}>
             Next
           </button>
         </form>
@@ -290,24 +292,24 @@ class Confirmation extends React.Component {
       <div>
         <h2>Confirm your details</h2>
         <div>
-          <li name="name">Name: {name}</li>
-          <li name="email">Email: {email}</li>
-          <li name="addressOne">Address Line 1: {addressOne}</li>
-          <li name="addressTwo">Address Line 2: {addressTwo}</li>
-          <li name="city">City: {city}</li>
-          <li name="state">State: {state}</li>
-          <li name="zip">Zip: {zip}</li>
-          <li name="phone">Phone: {phone}</li>
-          <li name="cc">Credit Card Number: {cc}</li>
-          <li name="exp">Expiration Date: {exp}</li>
-          <li name="cvv">CVV: {cvv}</li>
-          <li name="billingZip">Billing Zip Code: {billingZip}</li>
+          <li name='name'>Name: {name}</li>
+          <li name='email'>Email: {email}</li>
+          <li name='addressOne'>Address Line 1: {addressOne}</li>
+          <li name='addressTwo'>Address Line 2: {addressTwo}</li>
+          <li name='city'>City: {city}</li>
+          <li name='state'>State: {state}</li>
+          <li name='zip'>Zip: {zip}</li>
+          <li name='phone'>Phone: {phone}</li>
+          <li name='cc'>Credit Card Number: {cc}</li>
+          <li name='exp'>Expiration Date: {exp}</li>
+          <li name='cvv'>CVV: {cvv}</li>
+          <li name='billingZip'>Billing Zip Code: {billingZip}</li>
 
-          <button className="btn-prev" onClick={this.prev}>
+          <button className='btn-prev' onClick={this.prev}>
             Prev
           </button>
 
-          <button className="btn-purchase" onClick={this.purchase}>
+          <button className='btn-purchase' onClick={this.purchase}>
             Purchase
           </button>
         </div>
@@ -492,4 +494,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
