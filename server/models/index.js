@@ -1,4 +1,4 @@
-const db = require('../../db/index');
+const db = require('../../database/index');
 
 const createAccount = (body, callback) => {
   const query = `INSERT INTO account (name, email, password) VALUES (?, ?, ?)`;
