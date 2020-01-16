@@ -1,4 +1,5 @@
 import React from 'react';
+import css from '../styles/styles.css';
 import axios from 'axios';
 
 class Landing extends React.Component {
@@ -371,15 +372,30 @@ class App extends React.Component {
   }
 
   handleAccount(e) {
-    fetch('/account', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name: this.state.name,
-        email: this.state.email,
-        password: this.state.password
+    const accountData = {
+      name: this.state.name,
+      email: this.state.email,
+      password: this.state.password
+    };
+
+    axios
+      .post('/account', accountData)
+      .then(res => {
+        console.log(res);
       })
-    });
+      .catch(err => {
+        console.log(err);
+      });
+
+    // fetch('/account', {
+    //   method: 'POST',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify({
+    //     name: this.state.name,
+    //     email: this.state.email,
+    //     password: this.state.password
+    //   })
+    // });
   }
 
   handleShipping(e) {
