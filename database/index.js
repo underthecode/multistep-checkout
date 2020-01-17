@@ -1,19 +1,61 @@
-const mysql = require('mysql');
+const Sequelize = require('sequelize');
+const { database, user, password, host, dialect, port } = require('./auth');
 
-const db = require('./auth');
-
-const connection = mysql.createConnection({
-  host: db.host,
-  user: db.user,
-  password: db.password,
-  database: db.database
+const db = new Sequelize(database, user, password, {
+  host: host,
+  dialect: dialect,
+  port: port
 });
 
-connection.connect(err => {
-  if (err) {
-    throw err;
+db.authenticate()
+  .then(() => {
+    console.log('Multistep Checkout database is connected');
+  })
+  .catch(err => {
+    console.log('Err', err);
+  });
+
+const Account = db.define(
+  'Account',
+  {
+    name: Sequelize.STRING,
+    email: Sequelize.STRING,
+    password: Sequelize.STRING
+  },
+  {
+    timestamps: false
   }
-  console.log(`Multistep Checkout is connected to MySQL`);
-});
+);
 
-module.exports = connection;
+const Shipping = db.define(
+  'Shipping',
+  {
+    addressOne: Sequelize.STRING,
+    addressTwo: Sequelize.STRING,
+    city: Sequelize.STRING,
+    state: Sequelize.STRING,
+    zip: Sequelize.INTEGER,
+    phone: Sequelize.STRING
+  },
+  {
+    timestamps: false
+  }
+);
+
+const Billing = db.define(
+  'Billing',
+  {
+    cc: Sequelize.STRING,
+    exp: Sequelize.INTEGER,
+    billingZip: Sequelize.INTEGER,
+    state: Sequelize.STRING,
+    zip: Sequelize.INTEGER
+  },
+  {
+    timestamps: false
+  }
+);
+
+db.sync();
+
+module.exports = { Account, Shipping, Billing };
