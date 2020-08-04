@@ -9,9 +9,9 @@ const db = new Sequelize(database, user, password, {
 
 db.authenticate()
   .then(() => {
-    console.log('Multistep Checkout database is connected');
+    console.log('MySQL database connected');
   })
-  .catch(err => {
+  .catch((err) => {
     console.log('Err', err);
   });
 
@@ -23,7 +23,8 @@ const Account = db.define(
     password: Sequelize.STRING
   },
   {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
   }
 );
 
@@ -38,7 +39,8 @@ const Shipping = db.define(
     phone: Sequelize.STRING
   },
   {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
   }
 );
 
@@ -52,7 +54,8 @@ const Billing = db.define(
     zip: Sequelize.INTEGER
   },
   {
-    timestamps: false
+    timestamps: true,
+    freezeTableName: true
   }
 );
 
