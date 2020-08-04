@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 router.post('/account', (req, res) => {
   controllers.createAccount(req.body, (err, data) => {
     if (err) {
-      throw err;
+      res.status(400).send('Bad Request on Account route');
     } else {
       console.log('Routes: Account POST Success');
       res.status(201).send(data);
@@ -20,7 +20,7 @@ router.post('/account', (req, res) => {
 router.post('/shipping', (req, res) => {
   controllers.createShipping(req.body, (err, data) => {
     if (err) {
-      throw err;
+      res.status(400).send('Bad Request on Shipping route');
     } else {
       console.log('Routes: Shipping POST Success');
       res.status(201).send(data);
@@ -31,7 +31,7 @@ router.post('/shipping', (req, res) => {
 router.post('/billing', (req, res) => {
   controllers.createBilling(req.body, (err, data) => {
     if (err) {
-      throw err;
+      res.status(400).send('Bad Request on Billing route');
     } else {
       console.log('Routes: Billing POST Success');
       res.status(201).send(data);
