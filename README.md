@@ -1,16 +1,17 @@
 # multistep-checkout
 
-## try it out!
+## initialize
 
 - `git clone` this repo
-- `npm install` in terminal
+- install _**nodemon**_ globally
+- `npm i` in terminal
+- change _**auth.example.js**_ to _**auth.js**_ && update options
 - `npm run dev` in terminal
-- click [this](http://localhost:3000/) to open in browser
 
-## requirements
+## about
 
 #### a single-page app that simulates a checkout experience, where:
 
-- Express serves up an index.html file and its associated assets
-- the UI uses React.js && views pre-compile with Babel
-- MySQL stores user data
+- React renders checkout with Webpack bundling
+- Express serves up the index.html and assets
+- MySQL stores created user data
