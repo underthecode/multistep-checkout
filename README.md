@@ -10,7 +10,7 @@
 
 ## about
 
-#### a single-page app that simulates a checkout experience, where:
+#### checkout experience simulation, where:
 
 - React renders checkout with Webpack bundling
 - Express serves up the index.html and assets
